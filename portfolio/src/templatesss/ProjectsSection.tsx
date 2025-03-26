@@ -25,11 +25,11 @@ const Projects: React.FC = () => {
       githubLink: '#',
       liveLink: 'https://agromitra.vercel.app',
       images: [
-        'public/scs/Screenshot 2025-02-09 174218.png',
-        'public/scs/Screenshot 2025-02-09 174101.png',
-        'public/scs/Screenshot 2025-02-09 173909.png'
+        '/scs/Screenshot 2025-02-09 174218.png',
+        '/scs/Screenshot 2025-02-09 174101.png',
+        '/scs/Screenshot 2025-02-09 173909.png'
       ],
-      videoDemo: 'public/video/Screen Recording 2025-01-20 125917.mp4', // Replace with actual video link
+      videoDemo: '/video/Screen Recording 2025-01-20 125917.mp4', // Replace with actual video link
       icon: <Code className="text-[#6E41C0]" size={40} strokeWidth={1.5} />,
       color: '#6E41C0'
     },
@@ -40,11 +40,11 @@ const Projects: React.FC = () => {
       githubLink: '#',
       liveLink: '#',
       images: [
-        'public/scs/Screenshot 2025-02-09 174218.png',
-        'public/scs/Screenshot 2025-02-09 174101.png',
-        'public/scs/Screenshot 2025-02-09 173909.png'
+        '/scs/Screenshot 2025-02-09 174218.png',
+        '/scs/Screenshot 2025-02-09 174101.png',
+        '/scs/Screenshot 2025-02-09 173909.png'
       ],
-      videoDemo: 'public/video/Screen Recording 2025-01-20 125917.mp4', // Replace with actual video link
+      videoDemo: '/video/Screen Recording 2025-01-20 125917.mp4', // Replace with actual video link
       icon: <Layers className="text-[#41C0A0]" size={40} strokeWidth={1.5} />,
       color: '#41C0A0'
     },
@@ -55,11 +55,11 @@ const Projects: React.FC = () => {
       githubLink: '#',
       liveLink: '#',
       images: [
-        'public/scs/Screenshot 2025-02-09 174218.png',
-        'public/scs/Screenshot 2025-02-09 174101.png',
-        'public/scs/Screenshot 2025-02-09 173909.png'
+        '/scs/Screenshot 2025-02-09 174218.png',
+        '/scs/Screenshot 2025-02-09 174101.png',
+        '/scs/Screenshot 2025-02-09 173909.png'
       ],
-      videoDemo: 'public/video/Screen Recording 2025-01-20 125917.mp', // Replace with actual video link
+      videoDemo: '/video/Screen Recording 2025-01-20 125917.mp', // Replace with actual video link
       icon: <Compass className="text-[#6E41C0]" size={40} strokeWidth={1.5} />,
       color: '#6E41C0'
     },
@@ -70,9 +70,9 @@ const Projects: React.FC = () => {
       githubLink: '#',
       liveLink: '#',
       images: [
-        'public/scs/Screenshot 2025-02-09 174218.png',
-        'public/scs/Screenshot 2025-02-09 174101.png',
-        'public/scs/Screenshot 2025-02-09 173909.png'
+        '/scs/Screenshot 2025-02-09 174218.png',
+        '/scs/Screenshot 2025-02-09 174101.png',
+        '/scs/Screenshot 2025-02-09 173909.png'
       ],
       videoDemo: 'public/video/Screen Recording 2025-01-20 125917.mp', // Replace with actual video link
       icon: <Monitor className="text-[#41C0A0]" size={40} strokeWidth={1.5} />,
@@ -85,11 +85,11 @@ const Projects: React.FC = () => {
       githubLink: '#',
       liveLink: '#',
       images: [
-        'public/scs/Screenshot 2025-02-09 174218.png',
-        'public/scs/Screenshot 2025-02-09 174101.png',
-        'public/scs/Screenshot 2025-02-09 173909.png'
+        '/scs/Screenshot 2025-02-09 174218.png',
+        '/scs/Screenshot 2025-02-09 174101.png',
+        '/scs/Screenshot 2025-02-09 173909.png'
       ],
-      videoDemo: 'public/video/Screen Recording 2025-01-20 125917.mp', // Replace with actual video link
+      videoDemo: '/video/Screen Recording 2025-01-20 125917.mp', // Replace with actual video link
       icon: <Zap className="text-[#6E41C0]" size={40} strokeWidth={1.5} />,
       color: '#6E41C0'
     }

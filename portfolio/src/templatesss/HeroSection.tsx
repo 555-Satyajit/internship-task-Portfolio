@@ -5,7 +5,7 @@ import { Download, Send, Code, PenTool, Layers } from 'lucide-react'
 const Hero: React.FC = () => {
   const handleDownload = () => {
     const link = document.createElement('a')
-    link.href = '/public/Satyajit Pujapanda (1).pdf'
+    link.href = '/Satyajit Pujapanda (1).pdf'
     link.setAttribute('download', 'Satyjit-Resume.pdf')
     document.body.appendChild(link)
     link.click()
