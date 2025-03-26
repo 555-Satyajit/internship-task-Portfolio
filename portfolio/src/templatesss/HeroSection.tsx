@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
           duration: 4, 
           repeat: Infinity 
         }}
-        className="absolute top-1/4 left-1/4 bg-[#6E41C0] w-16 h-16 rounded-full blur-xl opacity-30"
+        className="absolute top-1/4 left-1/4 bg-[#6E41C0] w-16 h-16 rounded-full blur-xl opacity-30 hidden md:block"
       />
 
       <motion.div
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
           repeat: Infinity,
           delay: 1
         }}
-        className="absolute bottom-1/4 right-1/4 bg-[#41C0A0] w-16 h-16 rounded-full blur-xl opacity-30"
+        className="absolute bottom-1/4 right-1/4 bg-[#41C0A0] w-16 h-16 rounded-full blur-xl opacity-30 hidden md:block"
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
             Hi, I'm <span className="text-[#6E41C0]">Satyajit Pujapanda</span>
           </h1>
           
@@ -113,17 +113,17 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl mb-8 text-gray-300"
+            className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-300"
           >
             A Creative Developer & Designer Crafting Digital Experiences
           </motion.p>
           
-          <div className="flex justify-center space-x-4 mb-12">
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
             <motion.button
               onClick={handleDownload}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center bg-[#6E41C0] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#5A36A0] transition-all"
+              className="flex items-center justify-center bg-[#6E41C0] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#5A36A0] transition-all"
             >
               <Download className="mr-2" /> Download CV
             </motion.button>
@@ -132,14 +132,14 @@ const Hero: React.FC = () => {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center border border-[#6E41C0] text-[#6E41C0] px-6 py-3 rounded-full hover:bg-[#6E41C0] hover:text-white transition-all"
+              className="flex items-center justify-center border border-[#6E41C0] text-[#6E41C0] px-6 py-3 rounded-full hover:bg-[#6E41C0] hover:text-white transition-all"
             >
               <Send className="mr-2" /> Contact Me
             </motion.a>
           </div>
 
           {/* Skills Showcase */}
-          <div className="flex justify-center space-x-8">
+          <div className="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
