@@ -53,8 +53,11 @@ Copy your Public Key.
 Step 5: Add Credentials to a .env File
 In your project root directory, create a .env file and add the following:
 VITE_APP_EMAILJS_SERVICE_ID='your_service_id'
+
 VITE_APP_EMAILJS_TEMPLATE_ID='your_template_id'
+
 VITE_APP_EMAILJS_PUBLIC_KEY='your_public_key'
+
 🔹 Replace the values with your actual credentials from EmailJS.
 
 Step 6: Modify ContactSection.tsx to Use EmailJS
