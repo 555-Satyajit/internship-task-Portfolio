@@ -1,6 +1,6 @@
 # 🌟 Satyajit Pujapanda - Portfolio Website
 
-🚀 Live Demo: View Portfolio
+🚀 Live Demo: https://portfolio-ashy-nine-10.vercel.app
 
 📌 Overview
 This is my personal portfolio website designed to showcase my skills, projects, and experience in AI/ML and full-stack web development. It serves as a digital resume, allowing visitors and recruiters to explore my work and get in touch with me.
