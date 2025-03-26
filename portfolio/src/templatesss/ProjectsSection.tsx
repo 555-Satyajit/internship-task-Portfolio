@@ -1,10 +1,10 @@
+/// <reference types="react" />
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Github, 
   ExternalLink, 
   Play, 
-  Image as ImageIcon, 
   Code, 
   Layers, 
   Compass,
@@ -93,7 +93,19 @@ const Projects: React.FC = () => {
     }
   ]
 
-  const ProjectModal = ({ project }) => (
+  interface Project {
+    title: string;
+    description: string;
+    technologies: string[];
+    githubLink: string;
+    liveLink: string;
+    images: string[];
+    videoDemo?: string;
+    icon: JSX.Element;
+    color: string;
+  }
+
+  const ProjectModal: React.FC<{ project: Project }> = ({ project }) => (
     <motion.div 
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}

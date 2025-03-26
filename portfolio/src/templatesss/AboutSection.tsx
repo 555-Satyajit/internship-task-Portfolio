@@ -16,9 +16,9 @@ import {
 } from 'lucide-react'
 
 const About: React.FC = () => {
-    const [activeSection, setActiveSection] = useState('journey')
+    const [activeSection, setActiveSection] = useState<keyof typeof sections>('journey')
   
-    const sections = {
+    const sections: Record<'journey' | 'values' | 'stats', { title: string; content: JSX.Element }> = {
       journey: {
         title: 'Professional Journey',
         content: (
@@ -217,7 +217,7 @@ const About: React.FC = () => {
         {/* Interactive Section Selector */}
         <div className="max-w-4xl mx-auto mb-8">
           <div className="flex justify-center space-x-4 mb-8">
-            {Object.keys(sections).map((key) => (
+            {(Object.keys(sections) as Array<keyof typeof sections>).map((key) => (
               <button
                 key={key}
                 onClick={() => setActiveSection(key)}
