@@ -8,7 +8,6 @@ import {
   ArrowRight, 
   Code, 
   Server, 
-  Database 
 } from 'lucide-react'
 
 const Experience: React.FC = () => {
