@@ -61,9 +61,9 @@ const Contact: React.FC = () => {
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.name,
-          to_name: 'Satyajit',
+          to_name: 'Satyajit',  //add yours
           from_email: formData.email,
-          to_email: 'satyajitpujapanda9@gmail.com',
+          to_email: 'satyajitpujapanda9@gmail.com',// add yours
           message: enhancedMessage,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY

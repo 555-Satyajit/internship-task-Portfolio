@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 
 const Skills: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('frontend')
+  const [activeCategory, setActiveCategory] = useState<keyof typeof skillCategories>('frontend')
 
   const skillCategories = {
     frontend: {
@@ -108,7 +108,7 @@ const Skills: React.FC = () => {
 
         {/* Skill Category Selector */}
         <div className="flex justify-center space-x-4 mb-12">
-          {Object.keys(skillCategories).map((category) => (
+          {(Object.keys(skillCategories) as Array<keyof typeof skillCategories>).map((category) => (
             <motion.button
               key={category}
               onClick={() => setActiveCategory(category)}
