@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden bg-[#121212]"
+      className="relative min-h-screen flex items-center justify-center pt-4 sm:pt-8 md:pt-16 overflow-hidden bg-[#121212]"
     >
       {/* Advanced Background SVG Elements */}
       <svg 
