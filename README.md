@@ -22,12 +22,47 @@ Deployment: Hosted on Vercel
 ✔️ Responsive Design - Mobile-friendly & optimized layout
 ✔️ Animations - Smooth UI/UX with Framer Motion
 
+
+✉️ Setting Up EmailJS for Contact Form
+Step 1: Create an EmailJS Account
+Go to EmailJS and sign up for a free account.
+
+After logging in, go to the Dashboard.
+
+Step 2: Create an EmailJS Service
+Navigate to Email Services in the dashboard.
+
+Click on "Add a New Service".
+
+Select your email provider (Gmail, Outlook, etc.).
+
+Click "Create Service" and copy the Service ID.
+
+Step 3: Create an EmailJS Template
+Go to Email Templates and click "Create New Template".
+
+Customize the email template (use placeholders like {{name}}, {{email}}, {{message}}).
+
+Save the template and copy the Template ID.
+
+Step 4: Get Your Public Key
+Navigate to Account > API Keys.
+
+Copy your Public Key.
+
+Step 5: Add Credentials to a .env File
+In your project root directory, create a .env file and add the following:
+VITE_APP_EMAILJS_SERVICE_ID='your_service_id'
+VITE_APP_EMAILJS_TEMPLATE_ID='your_template_id'
+VITE_APP_EMAILJS_PUBLIC_KEY='your_public_key'
+🔹 Replace the values with your actual credentials from EmailJS.
+
+Step 6: Modify ContactSection.tsx to Use EmailJS
+Edit your Contact Form Component (ContactSection.tsx line 64 and 66) to use these variables:
+
 🖥️ Getting Started
 To run this portfolio locally, follow these steps:
 
-bash
-Copy
-Edit
 # Clone the repository
 git clone https://github.com/your-github-username/your-portfolio-repo.git
 
