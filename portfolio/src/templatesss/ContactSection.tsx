@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { 
   Send, 
@@ -8,8 +8,73 @@ import {
   Phone, 
   Linkedin, 
   Github, 
-  Twitter 
+  Twitter,
+  X
 } from 'lucide-react'
+
+// Reusable Modal Component
+const Modal: React.FC<{
+  isOpen: boolean;
+  onClose: () => void;
+  type: 'success' | 'error';
+  title: string;
+  message: string;
+}> = ({ isOpen, onClose, type, title, message }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.3 }}
+        className={`
+          relative w-[90%] max-w-md 
+          rounded-xl p-6 
+          ${type === 'success' 
+            ? 'bg-green-500 text-white' 
+            : 'bg-red-500 text-white'}
+        `}
+      >
+        <button 
+          onClick={onClose} 
+          className="absolute top-4 right-4 hover:bg-white/20 rounded-full p-1"
+        >
+          <X size={24} />
+        </button>
+        
+        <div className="text-center">
+          <div className="mb-4 flex justify-center">
+            {type === 'success' ? (
+              <div className="bg-white/30 rounded-full p-4">
+                <Send size={40} className="text-white" />
+              </div>
+            ) : (
+              <div className="bg-white/30 rounded-full p-4">
+                <X size={40} className="text-white" />
+              </div>
+            )}
+          </div>
+          
+          <h2 className="text-2xl font-bold mb-4">{title}</h2>
+          <p className="text-white/90 mb-6">{message}</p>
+          
+          <button 
+            onClick={onClose} 
+            className="
+              w-full py-3 rounded-lg 
+              bg-white/20 hover:bg-white/30 
+              transition-all duration-300
+            "
+          >
+            Close
+          </button>
+        </div>
+      </motion.div>
+    </div>
+  )
+}
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -18,14 +83,11 @@ const Contact: React.FC = () => {
     message: ''
   })
   const [loading, setLoading] = useState(false)
-  const [alert, setAlert] = useState<{
-    show: boolean, 
-    text: string, 
-    type: 'success' | 'danger'
-  }>({
-    show: false,
-    text: '',
-    type: 'success'
+  const [modal, setModal] = useState({
+    isOpen: false,
+    type: 'success' as 'success' | 'error',
+    title: '',
+    message: ''
   })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -36,16 +98,17 @@ const Contact: React.FC = () => {
     }))
   }
 
-  const showAlert = (alertInfo: {
-    show: boolean, 
-    text: string, 
-    type: 'success' | 'danger'
-  }) => {
-    setAlert(alertInfo)
+  const showModal = (type: 'success' | 'error', title: string, message: string) => {
+    setModal({
+      isOpen: true,
+      type,
+      title,
+      message
+    })
   }
 
-  const hideAlert = () => {
-    setAlert({ show: false, text: '', type: 'success' })
+  const closeModal = () => {
+    setModal(prev => ({ ...prev, isOpen: false }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -61,9 +124,9 @@ const Contact: React.FC = () => {
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.name,
-          to_name: 'Satyajit',  //add yours
+          to_name: 'Satyajit',
           from_email: formData.email,
-          to_email: 'satyajitpujapanda9@gmail.com',// add yours
+          to_email: 'satyajitpujapanda9@gmail.com',
           message: enhancedMessage,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
@@ -71,30 +134,27 @@ const Contact: React.FC = () => {
       .then(
         () => {
           setLoading(false)
-          showAlert({
-            show: true,
-            text: 'Thank you for your message 😃',
-            type: 'success',
-          })
+          showModal(
+            'success', 
+            'Message Sent!', 
+            'Thank you for reaching out. I will get back to you soon.'
+          )
           
           // Reset form after successful submission
-          setTimeout(() => {
-            hideAlert()
-            setFormData({
-              name: '',
-              email: '',
-              message: '',
-            })
-          }, 3000)
+          setFormData({
+            name: '',
+            email: '',
+            message: '',
+          })
         },
         (error) => {
           setLoading(false)
           console.error(error)
-          showAlert({
-            show: true,
-            text: "I didn't receive your message 😢",
-            type: 'danger',
-          })
+          showModal(
+            'error', 
+            'Oops! Something went wrong', 
+            "We couldn't send your message. Please try again later."
+          )
         }
       )
   }
@@ -104,7 +164,7 @@ const Contact: React.FC = () => {
       id="contact" 
       className="relative bg-[#121212] text-white py-16 md:py-24 overflow-hidden"
     >
-      {/* Decorative SVG Background */}
+      {/* SVG Background */}
       <svg 
         className="absolute inset-0 z-0 opacity-20" 
         xmlns="http://www.w3.org/2000/svg" 
@@ -173,20 +233,21 @@ const Contact: React.FC = () => {
         className="absolute bottom-1/4 right-1/4 bg-[#41C0A0] w-16 h-16 rounded-full blur-xl opacity-30"
       />
 
-      <div className="relative z-10 container mx-auto px-4">
-        {/* Alert Component */}
-        {alert.show && (
-          <div 
-            className={`fixed top-4 right-4 z-50 p-4 rounded-lg ${
-              alert.type === 'success' 
-                ? 'bg-green-600 text-white' 
-                : 'bg-red-600 text-white'
-            }`}
-          >
-            {alert.text}
-          </div>
+      {/* Modal */}
+      <AnimatePresence>
+        {modal.isOpen && (
+          <Modal
+            isOpen={modal.isOpen}
+            onClose={closeModal}
+            type={modal.type}
+            title={modal.title}
+            message={modal.message}
+          />
         )}
+      </AnimatePresence>
 
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-4">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
