@@ -27,7 +27,7 @@ const About: React.FC = () => {
           <motion.div 
             initial="hidden"
             animate="visible"
-            className="space-y-4"
+            className="space-y-6"
           >
             <motion.p 
               variants={{
@@ -38,7 +38,7 @@ const About: React.FC = () => {
                   transition: { duration: 0.5 }
                 }
               }}
-              className="text-gray-300 text-sm sm:text-base text-center px-4"
+              className="text-gray-300 text-base sm:text-lg text-center px-4 max-w-3xl mx-auto"
             >
               With a passion for transforming complex challenges into elegant 
               digital solutions, I've dedicated my career to pushing the 
@@ -55,7 +55,7 @@ const About: React.FC = () => {
                   }
                 }
               }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 px-4"
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 max-w-5xl mx-auto"
             >
               {[
                 {
@@ -84,18 +84,18 @@ const About: React.FC = () => {
                       transition: { duration: 0.5 }
                     }
                   }}
-                  className="bg-[#2A2A2A] p-4 rounded-lg flex items-center"
+                  className="bg-[#2A2A2A] p-6 rounded-lg flex items-center"
                 >
                   <detail.icon 
                     className="mr-4 text-[#6E41C0] flex-shrink-0" 
-                    size={24} 
+                    size={32} 
                     strokeWidth={1.5} 
                   />
                   <div>
-                    <h4 className="font-semibold text-white mb-1 text-sm sm:text-base">
+                    <h4 className="font-semibold text-white mb-2 text-base sm:text-lg">
                       {detail.title}
                     </h4>
-                    <p className="text-gray-400 text-xs sm:text-sm">
+                    <p className="text-gray-400 text-sm sm:text-base">
                       {detail.description}
                     </p>
                   </div>
@@ -108,7 +108,7 @@ const About: React.FC = () => {
       values: {
         title: 'Core Values',
         content: (
-          <div className="space-y-4 px-4">
+          <div className="space-y-6 px-4 max-w-4xl mx-auto">
             {[
               {
                 icon: Rocket,
@@ -128,18 +128,18 @@ const About: React.FC = () => {
             ].map((value, index) => (
               <div 
                 key={index} 
-                className="bg-[#2A2A2A] p-4 rounded-lg flex items-center"
+                className="bg-[#2A2A2A] p-6 rounded-lg flex items-center"
               >
                 <value.icon 
                   className="mr-4 text-[#6E41C0] flex-shrink-0" 
-                  size={24} 
+                  size={32} 
                   strokeWidth={1.5} 
                 />
                 <div>
-                  <h4 className="font-semibold text-white mb-1 text-sm sm:text-base">
+                  <h4 className="font-semibold text-white mb-2 text-base sm:text-lg">
                     {value.title}
                   </h4>
-                  <p className="text-gray-400 text-xs sm:text-sm">
+                  <p className="text-gray-400 text-sm sm:text-base">
                     {value.description}
                   </p>
                 </div>
@@ -151,7 +151,7 @@ const About: React.FC = () => {
       stats: {
         title: 'Professional Stats',
         content: (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 max-w-5xl mx-auto">
             {[
               { 
                 icon: Award, 
@@ -174,18 +174,18 @@ const About: React.FC = () => {
             ].map((stat, index) => (
               <div 
                 key={index} 
-                className="bg-[#2A2A2A] p-6 rounded-lg text-center"
+                className="bg-[#2A2A2A] p-8 rounded-lg text-center"
               >
                 <stat.icon 
-                  size={40} 
-                  className="mx-auto mb-3" 
+                  size={48} 
+                  className="mx-auto mb-4" 
                   color={stat.color} 
                   strokeWidth={1.5} 
                 />
-                <h4 className="text-2xl font-bold text-[#6E41C0] mb-2">
+                <h4 className="text-3xl font-bold text-[#6E41C0] mb-3">
                   {stat.value}
                 </h4>
-                <p className="text-xs sm:text-sm text-gray-300">{stat.title}</p>
+                <p className="text-sm sm:text-base text-gray-300">{stat.title}</p>
               </div>
             ))}
           </div>
@@ -196,7 +196,7 @@ const About: React.FC = () => {
     return (
       <section 
         id="about" 
-        className="relative bg-[#121212] text-white py-12 md:py-24"
+        className="relative bg-[#121212] text-white py-16 md:py-24"
       >
         <div className="container mx-auto px-4 relative">
           {/* Header */}
@@ -204,12 +204,12 @@ const About: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8 md:mb-16"
+            className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               About <span className="text-[#6E41C0]">Me</span>
             </h2>
-            <p className="max-w-3xl mx-auto text-gray-400 text-sm md:text-lg px-4">
+            <p className="max-w-4xl mx-auto text-gray-400 text-base md:text-xl px-4">
               A passionate developer and designer with a knack for creating 
               innovative digital solutions. I blend technical expertise with 
               creative design to bring ideas to life.
@@ -217,14 +217,14 @@ const About: React.FC = () => {
           </motion.div>
 
           {/* Interactive Section Selector */}
-          <div className="max-w-4xl mx-auto mb-8">
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+          <div className="max-w-5xl mx-auto mb-12">
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-10">
               {(Object.keys(sections) as Array<keyof typeof sections>).map((key) => (
                 <button
                   key={key}
                   onClick={() => setActiveSection(key)}
                   className={`
-                    px-4 py-2 rounded-full transition-all duration-300 w-full sm:w-auto text-sm
+                    px-6 py-3 rounded-full transition-all duration-300 w-full sm:w-auto text-base
                     ${activeSection === key 
                       ? 'bg-[#6E41C0] text-white' 
                       : 'bg-[#2A2A2A] text-gray-300 hover:bg-[#3A3A3A]'}
@@ -250,11 +250,11 @@ const About: React.FC = () => {
           </div>
 
           {/* Personal Traits */}
-          <div className="max-w-4xl mx-auto mt-12">
-            <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-center text-[#6E41C0]">
+          <div className="max-w-5xl mx-auto mt-16">
+            <h3 className="text-2xl sm:text-3xl font-semibold mb-10 text-center text-[#6E41C0]">
               Personal Traits
             </h3>
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <div className="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-12">
               {[
                 {
                   icon: Zap,
@@ -277,12 +277,12 @@ const About: React.FC = () => {
                   className="text-center flex flex-col items-center"
                 >
                   <trait.icon 
-                    className="mb-2" 
+                    className="mb-4" 
                     color={trait.color} 
-                    size={40} 
+                    size={48} 
                     strokeWidth={1.5} 
                   />
-                  <span className="text-gray-300 text-sm">{trait.trait}</span>
+                  <span className="text-gray-300 text-base">{trait.trait}</span>
                 </div>
               ))}
             </div>
