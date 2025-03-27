@@ -51,7 +51,7 @@ const Skills: React.FC = () => {
   return (
     <section 
       id="skills" 
-      className="relative bg-[#121212] text-white py-16 md:py-24 overflow-hidden"
+      className="relative bg-[#121212] text-white py-12 md:py-24 overflow-hidden"
     >
       {/* Background SVG Pattern */}
       <svg 
@@ -95,19 +95,19 @@ const Skills: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
             My <span className="text-[#6E41C0]">Skills</span>
           </h2>
-          <p className="max-w-3xl mx-auto text-gray-400 text-base md:text-lg">
+          <p className="max-w-3xl mx-auto text-gray-400 text-sm md:text-lg px-2">
             A comprehensive toolkit for crafting innovative digital solutions, 
             blending technical expertise with creative problem-solving.
           </p>
         </motion.div>
 
         {/* Skill Category Selector */}
-        <div className="flex justify-center space-x-4 mb-12">
+        <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 mb-8 md:mb-12 px-2">
           {(Object.keys(skillCategories) as Array<keyof typeof skillCategories>).map((category) => (
             <motion.button
               key={category}
@@ -115,14 +115,15 @@ const Skills: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`
-                px-6 py-3 rounded-full flex items-center transition-all duration-300
+                px-4 py-2 sm:px-6 sm:py-3 rounded-full flex items-center justify-center transition-all duration-300
                 ${activeCategory === category 
                   ? 'bg-[#6E41C0] text-white' 
                   : 'bg-[#2A2A2A] text-gray-300 hover:bg-[#3A3A3A]'}
+                w-full sm:w-auto text-sm sm:text-base
               `}
             >
               {React.createElement(skillCategories[category].icon, {
-                className: "mr-2",
+                className: "mr-2 hidden sm:block",
                 size: 20,
                 strokeWidth: 1.5
               })}
@@ -137,15 +138,15 @@ const Skills: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-2xl mx-auto space-y-6"
+          className="max-w-2xl mx-auto space-y-4 md:space-y-6 px-2"
         >
           {skillCategories[activeCategory].skills.map((skill, index) => (
-            <div key={skill.name} className="mb-4">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-gray-300">{skill.name}</span>
-                <span className="text-[#6E41C0] font-semibold">{skill.level}%</span>
+            <div key={skill.name} className="mb-3 md:mb-4">
+              <div className="flex justify-between items-center mb-1 md:mb-2">
+                <span className="text-xs sm:text-sm text-gray-300">{skill.name}</span>
+                <span className="text-xs sm:text-sm text-[#6E41C0] font-semibold">{skill.level}%</span>
               </div>
-              <div className="bg-[#2A2A2A] rounded-full h-3 overflow-hidden">
+              <div className="bg-[#2A2A2A] rounded-full h-2 md:h-3 overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${skill.level}%` }}
@@ -167,7 +168,7 @@ const Skills: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mt-16 flex justify-center space-x-8"
+          className="mt-10 md:mt-16 flex flex-wrap justify-center gap-6 md:space-x-8"
         >
           {[
             { icon: Code, color: '#6E41C0', label: 'Programming' },
@@ -189,7 +190,7 @@ const Skills: React.FC = () => {
                   }
                 }
               }}
-              className="text-center"
+              className="text-center w-1/3 sm:w-auto"
             >
               <item.icon 
                 color={item.color} 
@@ -197,7 +198,7 @@ const Skills: React.FC = () => {
                 strokeWidth={1.5} 
                 className="mx-auto mb-2"
               />
-              <span className="text-gray-300">{item.label}</span>
+              <span className="text-xs sm:text-base text-gray-300">{item.label}</span>
             </motion.div>
           ))}
         </motion.div>
