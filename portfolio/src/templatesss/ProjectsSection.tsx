@@ -120,107 +120,109 @@ const Projects: React.FC = () => {
     }
 
     return (
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 overflow-y-auto"
-      >
         <motion.div 
-          className="bg-[#2A2A2A] rounded-xl w-full max-w-4xl relative"
-          onClick={(e) => e.stopPropagation()}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 overflow-y-auto"
+          onClick={handleCloseModal}
         >
-          {/* Close Button */}
-          <button 
-            onClick={handleCloseModal}
-            title="Close Modal"
-            className="absolute top-4 right-4 z-50 bg-[#3A3A3A] rounded-full p-2 hover:bg-[#4A4A4A] transition-colors"
+          <motion.div 
+            className="bg-[#2A2A2A] rounded-xl w-full max-w-4xl relative my-8 overflow-y-auto max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
           >
-            <X className="text-white" size={24} />
-          </button>
-
-          <div className="p-6 md:p-8">
-            <div className="flex items-center mb-6">
-              {project.icon}
-              <h3 className="text-xl md:text-2xl font-bold ml-4 text-white">
-                {project.title}
-              </h3>
-            </div>
-
-            {/* Responsive Image Carousel */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              {project.images.map((image, index) => (
-                <motion.img 
-                  key={index}
-                  src={image} 
-                  alt={`${project.title} screenshot ${index + 1}`}
-                  className="rounded-lg object-cover w-full h-48"
-                  whileHover={{ scale: 1.05 }}
-                />
-              ))}
-            </div>
-
-            {/* Video Demo */}
-            {project.videoDemo && (
-              <div className="mb-6">
-                <h4 className="text-xl font-semibold mb-4 text-[#41C0A0] flex items-center">
-                  <Play className="mr-2" /> Project Demo
-                </h4>
-                <div className="aspect-video bg-black rounded-lg flex items-center justify-center">
-                  <video 
-                    ref={videoRef}
-                    controls 
-                    className="w-full h-full rounded-lg"
-                  >
-                    <source src={project.videoDemo} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+            {/* Close Button */}
+            <button 
+              onClick={handleCloseModal}
+              title="Close Modal"
+              className="absolute top-4 right-4 z-50 bg-[#3A3A3A] rounded-full p-2 hover:bg-[#4A4A4A] transition-colors"
+            >
+              <X className="text-white" size={24} />
+            </button>
+  
+            <div className="p-6 md:p-8">
+              <div className="flex items-center mb-6">
+                {project.icon}
+                <h3 className="text-xl md:text-2xl font-bold ml-4 text-white">
+                  {project.title}
+                </h3>
               </div>
-            )}
-
-            {/* Project Details */}
-            <p className="text-gray-300 mb-6 text-sm md:text-base">{project.description}</p>
-            
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.technologies.map((tech, index) => (
-                <span 
-                  key={index} 
-                  className="bg-[#3A3A3A] text-[#41C0A0] px-3 py-1 rounded-full text-xs md:text-sm"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            
-            <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-              <motion.a
-                href={project.githubLink}
-                target="_blank"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="flex items-center justify-center bg-[#6E41C0] text-white px-4 py-2 rounded-full"
-              >
-                <Github className="mr-2" /> GitHub
-              </motion.a>
+  
+              {/* Responsive Image Carousel */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                {project.images.map((image, index) => (
+                  <motion.img 
+                    key={index}
+                    src={image} 
+                    alt={`${project.title} screenshot ${index + 1}`}
+                    className="rounded-lg object-cover w-full h-48"
+                    whileHover={{ scale: 1.05 }}
+                  />
+                ))}
+              </div>
+  
+              {/* Video Demo */}
+              {project.videoDemo && (
+                <div className="mb-6">
+                  <h4 className="text-xl font-semibold mb-4 text-[#41C0A0] flex items-center">
+                    <Play className="mr-2" /> Project Demo
+                  </h4>
+                  <div className="aspect-video bg-black rounded-lg flex items-center justify-center">
+                    <video 
+                      ref={videoRef}
+                      controls 
+                      className="w-full h-full rounded-lg"
+                    >
+                      <source src={project.videoDemo} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              )}
+  
+              {/* Project Details */}
+              <p className="text-gray-300 mb-6 text-sm md:text-base">{project.description}</p>
               
-              <motion.a
-                href={project.liveLink}
-                target="_blank"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="flex items-center justify-center border border-[#41C0A0] text-[#41C0A0] px-4 py-2 rounded-full"
-              >
-                <ExternalLink className="mr-2" /> Live Demo
-              </motion.a>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.technologies.map((tech, index) => (
+                  <span 
+                    key={index} 
+                    className="bg-[#3A3A3A] text-[#41C0A0] px-3 py-1 rounded-full text-xs md:text-sm"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              
+              <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <motion.a
+                  href={project.githubLink}
+                  target="_blank"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="flex items-center justify-center bg-[#6E41C0] text-white px-4 py-2 rounded-full"
+                >
+                  <Github className="mr-2" /> GitHub
+                </motion.a>
+                
+                <motion.a
+                  href={project.liveLink}
+                  target="_blank"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="flex items-center justify-center border border-[#41C0A0] text-[#41C0A0] px-4 py-2 rounded-full"
+                >
+                  <ExternalLink className="mr-2" /> Live Demo
+                </motion.a>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    )
-  }
+      )
+    }
+  
 
   return (
     <section 
