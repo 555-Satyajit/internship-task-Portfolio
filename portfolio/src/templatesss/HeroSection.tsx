@@ -17,34 +17,78 @@ const Hero: React.FC = () => {
       id="home" 
       className="relative min-h-screen flex items-center justify-center px-4 py-8 sm:py-12 overflow-hidden bg-[#121212]"
     >
-      {/* SVG Background Stays the Same */}
+      {/* Background SVG with Gradient and Grid Pattern */}
       <svg 
         className="absolute inset-0 z-0 opacity-20" 
         xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 1440 810" 
         preserveAspectRatio="xMinYMin slice"
       >
-        {/* Previous SVG content remains unchanged */}
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{stopColor:'#6E41C0', stopOpacity:0.3}} />
+            <stop offset="100%" style={{stopColor:'#41C0A0', stopOpacity:0.3}} />
+          </linearGradient>
+          
+          <pattern 
+            id="gridPattern" 
+            width="40" 
+            height="40" 
+            patternUnits="userSpaceOnUse"
+          >
+            <path 
+              d="M 0 0 L 40 0 L 40 40 L 0 40 Z" 
+              fill="none" 
+              stroke="rgba(110, 65, 192, 0.1)" 
+              strokeWidth="1"
+            />
+          </pattern>
+        </defs>
+        
+        <rect 
+          width="100%" 
+          height="100%" 
+          fill="url(#grad1)"
+        />
+        <rect 
+          width="100%" 
+          height="100%" 
+          fill="url(#gridPattern)"
+        />
+        
+        <motion.path
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ 
+            duration: 5, 
+            repeat: Infinity, 
+            repeatType: "reverse" 
+          }}
+          d="M0 400 Q720 600 1440 400" 
+          fill="none" 
+          stroke="rgba(65, 192, 160, 0.2)" 
+          strokeWidth="3"
+        />
       </svg>
 
-      {/* Floating Elements Refined */}
+      {/* Floating Decorative Elements - Refined for Mobile */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
         animate={{ 
-          x: [0, 10, 0], 
+          x: [0, 20, 0], 
           opacity: [0.3, 0.5, 0.3] 
         }}
         transition={{ 
           duration: 4, 
           repeat: Infinity 
         }}
-        className="absolute top-1/4 left-1/4 bg-[#6E41C0] w-6 h-6 sm:w-10 sm:h-10 md:w-16 md:h-16 rounded-full blur-xl opacity-30"
+        className="absolute top-1/4 left-1/4 bg-[#6E41C0] w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full blur-xl opacity-30"
       />
 
       <motion.div
         initial={{ x: 50, opacity: 0 }}
         animate={{ 
-          x: [0, -10, 0], 
+          x: [0, -20, 0], 
           opacity: [0.3, 0.5, 0.3] 
         }}
         transition={{ 
@@ -52,7 +96,7 @@ const Hero: React.FC = () => {
           repeat: Infinity,
           delay: 1
         }}
-        className="absolute bottom-1/4 right-1/4 bg-[#41C0A0] w-6 h-6 sm:w-10 sm:h-10 md:w-16 md:h-16 rounded-full blur-xl opacity-30"
+        className="absolute bottom-1/4 right-1/4 bg-[#41C0A0] w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full blur-xl opacity-30"
       />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
@@ -74,8 +118,8 @@ const Hero: React.FC = () => {
             A Creative Developer & Designer Crafting Digital Experiences
           </motion.p>
           
-          {/* Button Container Now Responsive */}
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8 sm:mb-12">
+          {/* Buttons with Responsive Layout */}
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8 sm:mb-12">
             <motion.button
               onClick={handleDownload}
               whileHover={{ scale: 1.05 }}
@@ -95,32 +139,51 @@ const Hero: React.FC = () => {
             </motion.a>
           </div>
 
-          {/* Skills Showcase Now More Mobile-Friendly */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
-            {[
-              { icon: Code, color: 'text-[#6E41C0]', label: 'Web Development' },
-              { icon: PenTool, color: 'text-[#41C0A0]', label: 'UI/UX Design' },
-              { icon: Layers, color: 'text-[#6E41C0]', label: 'Full Stack Solutions' }
-            ].map(({ icon: Icon, color, label }, index) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 + index * 0.1 }}
-                className="flex flex-col items-center w-1/3 sm:w-auto"
-              >
-                <Icon 
-                  className={`${color} mb-2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10`} 
-                  strokeWidth={1.5} 
-                />
-                <span className="text-xs sm:text-sm md:text-base text-gray-300">{label}</span>
-              </motion.div>
-            ))}
+          {/* Skills Showcase */}
+          <div className="flex justify-center space-x-4 sm:space-x-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="flex flex-col items-center"
+            >
+              <Code 
+                className="text-[#6E41C0] mb-2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" 
+                strokeWidth={1.5} 
+              />
+              <span className="text-xs sm:text-sm md:text-base text-gray-300">Web Development</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="flex flex-col items-center"
+            >
+              <PenTool 
+                className="text-[#41C0A0] mb-2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" 
+                strokeWidth={1.5} 
+              />
+              <span className="text-xs sm:text-sm md:text-base text-gray-300">UI/UX Design</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="flex flex-col items-center"
+            >
+              <Layers 
+                className="text-[#6E41C0] mb-2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" 
+                strokeWidth={1.5} 
+              />
+              <span className="text-xs sm:text-sm md:text-base text-gray-300">Full Stack Solutions</span>
+            </motion.div>
           </div>
         </motion.div>
       </div>
 
-      {/* Animated Bottom Wave Stays the Same */}
+      {/* Animated Bottom Wave */}
       <svg 
         className="absolute bottom-0 left-0 w-full" 
         xmlns="http://www.w3.org/2000/svg" 
