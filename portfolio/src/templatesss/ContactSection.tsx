@@ -40,6 +40,7 @@ const Modal: React.FC<{
         <button 
           onClick={onClose} 
           className="absolute top-4 right-4 hover:bg-white/20 rounded-full p-1"
+          title="Close"
         >
           <X size={24} />
         </button>
