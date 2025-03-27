@@ -101,7 +101,9 @@ const Experience: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="text-center mb-12 md:mb-16 relative z-10"
+    
       >
+        as i have no experience i have add these for demonstration.
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           Professional <span className="text-[#6E41C0]">Experience</span>
         </h2>
