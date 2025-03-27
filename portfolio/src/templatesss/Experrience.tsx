@@ -56,6 +56,7 @@ const Experience: React.FC = () => {
       id="experience" 
       className="relative bg-[#121212] text-white py-16 md:py-24 overflow-hidden"
     >
+      {/* Background SVG Animation */}
       <svg 
         className="absolute inset-0 z-0 opacity-10" 
         xmlns="http://www.w3.org/2000/svg" 
@@ -94,6 +95,7 @@ const Experience: React.FC = () => {
         />
       </svg>
 
+      {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -108,8 +110,10 @@ const Experience: React.FC = () => {
         </p>
       </motion.div>
 
+      {/* Experience Container */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto flex md:flex-row flex-col gap-8">
+          {/* Company Selector */}
           <motion.div 
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -132,6 +136,7 @@ const Experience: React.FC = () => {
             ))}
           </motion.div>
 
+          {/* Experience Details */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCompany}
@@ -141,8 +146,8 @@ const Experience: React.FC = () => {
               transition={{ duration: 0.3 }}
               className="md:w-2/3 bg-[#2A2A2A] rounded-lg p-6 space-y-6"
             >
-              <div className="flex justify-between items-start">
-                <div>
+              <div className="flex flex-col md:flex-row justify-between items-start">
+                <div className="mb-4 md:mb-0">
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {experiences[activeCompany].title}
                   </h3>
@@ -151,7 +156,7 @@ const Experience: React.FC = () => {
                     <span>{experiences[activeCompany].company}</span>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-left md:text-right w-full md:w-auto">
                   <div className="flex items-center space-x-2 text-[#6E41C0]">
                     <Calendar size={16} />
                     <span>{experiences[activeCompany].duration}</span>
@@ -201,6 +206,7 @@ const Experience: React.FC = () => {
         </div>
       </div>
 
+      {/* Floating Decorative Icons */}
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ 
