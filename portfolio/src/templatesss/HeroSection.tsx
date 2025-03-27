@@ -106,9 +106,10 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="w-full"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white px-2">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white w-full">
             Hi, I'm <span className="text-[#6E41C0]">Satyajit Pujapanda</span>
           </h1>
+          
           
           <motion.p 
             initial={{ opacity: 0 }}
