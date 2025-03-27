@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
@@ -57,7 +56,6 @@ const Experience: React.FC = () => {
       id="experience" 
       className="relative bg-[#121212] text-white py-16 md:py-24 overflow-hidden"
     >
-      {/* Background SVG Animation */}
       <svg 
         className="absolute inset-0 z-0 opacity-10" 
         xmlns="http://www.w3.org/2000/svg" 
@@ -96,15 +94,12 @@ const Experience: React.FC = () => {
         />
       </svg>
 
-      {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="text-center mb-12 md:mb-16 relative z-10"
       >
-        as i have no experince i just add these for show case  //remove these
-
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           Professional <span className="text-[#6E41C0]">Experience</span>
         </h2>
@@ -113,10 +108,8 @@ const Experience: React.FC = () => {
         </p>
       </motion.div>
 
-      {/* Experience Container */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto flex md:flex-row flex-col gap-8">
-          {/* Company Selector */}
           <motion.div 
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -139,7 +132,6 @@ const Experience: React.FC = () => {
             ))}
           </motion.div>
 
-          {/* Experience Details */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCompany}
@@ -209,7 +201,6 @@ const Experience: React.FC = () => {
         </div>
       </div>
 
-      {/* Floating Decorative Icons */}
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ 
